@@ -6,9 +6,23 @@
 	
 	<script>		
 		function myFunc() {
+			var a = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+			var b = ['1', '2', '3', '4', '5', '6', '7', '8'];
+			var result = [];
+			var inputData = document.getElementById('lineEdit').value;
+			var indexA = a.indexOf(inputData[0]);
+			var indexB = b.indexOf(inputData[1]);
 			
-			var b = ["e2", "rf", "sa", "23", "gf4"];
-			alert(b)
+			result[result.length] = a[indexA + 1] + b[indexB + 2];
+			result[result.length] = a[indexA + 2] + b[indexB + 1];
+			result[result.length] = a[indexA + 2] + b[indexB - 1];
+			result[result.length] = a[indexA + 1] + b[indexB - 2];
+			result[result.length] = a[indexA - 1] + b[indexB - 2];
+			result[result.length] = a[indexA - 2] + b[indexB - 1];
+			result[result.length] = a[indexA - 2] + b[indexB + 1];
+			result[result.length] = a[indexA - 1] + b[indexB + 2];
+			alert(result);
+			
 		}
 	</script>
 </html>
