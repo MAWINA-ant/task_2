@@ -4,23 +4,49 @@
 	<input type="text" id="lineEdit"></input><br><br>
 	<input type="button" value="Ok" onclick="myFunc();"</input>
 	
-	<script>		
+	<script>
+		//конечно костылевая функция, но всё же
 		function myFunc() {
+			
+			//обЪявляю массивы с позициями на игровом поле и результата
 			var a = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 			var b = ['1', '2', '3', '4', '5', '6', '7', '8'];
 			var result = [];
+			
+			//переменная для введенной строки (позиции)
 			var inputData = document.getElementById('lineEdit').value;
+			
+			//переменные для поиска индекса в массиве начального положения
 			var indexA = a.indexOf(inputData[0]);
 			var indexB = b.indexOf(inputData[1]);
 			
-			result[result.length] = a[indexA + 1] + b[indexB + 2];
-			result[result.length] = a[indexA + 2] + b[indexB + 1];
-			result[result.length] = a[indexA + 2] + b[indexB - 1];
-			result[result.length] = a[indexA + 1] + b[indexB - 2];
-			result[result.length] = a[indexA - 1] + b[indexB - 2];
-			result[result.length] = a[indexA - 2] + b[indexB - 1];
-			result[result.length] = a[indexA - 2] + b[indexB + 1];
-			result[result.length] = a[indexA - 1] + b[indexB + 2];
+			// максимально возможное кол-во возможных ходов равно 8.
+			// все перебираю и если какого-то индекса нет в массиве то пропускаю
+			// остальные варианты добавляю в result
+			if (a.indexOf(a[indexA + 1]) != -1 && b.indexOf(b[indexB + 2]) != -1)
+				result[result.length] = a[indexA + 1] + b[indexB + 2];
+				
+			if (a.indexOf(a[indexA + 2]) != -1 && b.indexOf(b[indexB + 1]) != -1)
+				result[result.length] = a[indexA + 2] + b[indexB + 1];
+				
+			if (a.indexOf(a[indexA + 2]) != -1 && b.indexOf(b[indexB - 1]) != -1)
+				result[result.length] = a[indexA + 2] + b[indexB - 1];
+				
+			if (a.indexOf(a[indexA + 1]) != -1 && b.indexOf(b[indexB - 2]) != -1)
+				result[result.length] = a[indexA + 1] + b[indexB - 2];
+				
+			if (a.indexOf(a[indexA - 1]) != -1 && b.indexOf(b[indexB - 2]) != -1)
+				result[result.length] = a[indexA - 1] + b[indexB - 2];
+				
+			if (a.indexOf(a[indexA - 2]) != -1 && b.indexOf(b[indexB - 1]) != -1)
+				result[result.length] = a[indexA - 2] + b[indexB - 1];
+				
+			if (a.indexOf(a[indexA - 2]) != -1 && b.indexOf(b[indexB + 1]) != -1)
+				result[result.length] = a[indexA - 2] + b[indexB + 1];
+				
+			if (a.indexOf(a[indexA - 1]) != -1 && b.indexOf(b[indexB + 2]) != -1)
+				result[result.length] = a[indexA - 1] + b[indexB + 2];
+				
 			alert(result);
 			
 		}
